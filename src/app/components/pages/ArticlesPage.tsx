@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Search, Filter } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
+import { AnimatedCard, FadeInUp, StaggerContainer, StaggerItem } from '../AnimatedCard';
+import { motion } from 'motion/react';
 
 export function ArticlesPage() {
   const [selectedCategory, setSelectedCategory] = useState('Tous');
@@ -126,39 +128,42 @@ export function ArticlesPage() {
         </p>
 
         {/* Articles Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer>
           {filteredArticles.map((article) => (
-            <article
-              key={article.id}
-              className="group overflow-hidden rounded-xl border border-gray-800 bg-gray-900/50 transition-all hover:border-cyan-500/50 hover:bg-gray-900"
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <ImageWithFallback
-                  src={article.image}
-                  alt={article.title}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute left-3 top-3 rounded-full bg-cyan-500/90 px-3 py-1 text-xs text-white">
-                  {article.category}
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <div className="mb-3 flex items-center gap-3 text-xs text-gray-500">
-                  <span>{article.date}</span>
-                  <span>•</span>
-                  <span>{article.readTime} de lecture</span>
-                </div>
-                
-                <h3 className="mb-2 text-xl text-white transition-colors group-hover:text-cyan-400">
-                  {article.title}
-                </h3>
-                
-                <p className="text-sm text-gray-400">{article.excerpt}</p>
-              </div>
-            </article>
+            <StaggerItem key={article.id}>
+              <AnimatedCard>
+                <article
+                  className="group overflow-hidden rounded-xl border border-gray-800 bg-gray-900/50 transition-all hover:border-cyan-500/50 hover:bg-gray-900"
+                >
+                  <div className="relative aspect-video overflow-hidden">
+                    <ImageWithFallback
+                      src={article.image}
+                      alt={article.title}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute left-3 top-3 rounded-full bg-cyan-500/90 px-3 py-1 text-xs text-white">
+                      {article.category}
+                    </div>
+                  </div>
+                  
+                  <div className="p-6">
+                    <div className="mb-3 flex items-center gap-3 text-xs text-gray-500">
+                      <span>{article.date}</span>
+                      <span>•</span>
+                      <span>{article.readTime} de lecture</span>
+                    </div>
+                    
+                    <h3 className="mb-2 text-xl text-white transition-colors group-hover:text-cyan-400">
+                      {article.title}
+                    </h3>
+                    
+                    <p className="text-sm text-gray-400">{article.excerpt}</p>
+                  </div>
+                </article>
+              </AnimatedCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* No results */}
         {filteredArticles.length === 0 && (
