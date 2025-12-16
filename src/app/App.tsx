@@ -6,6 +6,7 @@ import { InfosPage } from './components/pages/InfosPage';
 import { UserPage } from './components/pages/UserPage';
 import { HelpCenterPage } from './components/pages/HelpCenterPage';
 import { AboutPage } from './components/pages/AboutPage';
+import { FormationPage } from './components/pages/FormationPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/articles" element={<ArticlesPage />} />
           <Route path="/infos" element={<InfosPage />} />
+          <Route path="/formation" element={<FormationPage />} />
           <Route path="/utilisateur" element={<UserPage />} />
           <Route path="/centre-aide" element={<HelpCenterPage />} />
           <Route path="/a-propos" element={<AboutPage />} />

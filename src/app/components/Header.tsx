@@ -10,6 +10,7 @@ export function Header() {
     { path: '/', label: 'Accueil' },
     { path: '/articles', label: 'Articles' },
     { path: '/infos', label: 'Infos' },
+    { path: '/formation', label: 'Formation' },
     { path: '/centre-aide', label: "Centre d'aide" },
     { path: '/a-propos', label: 'À propos' },
     { path: '/utilisateur', label: 'Utilisateur' },
