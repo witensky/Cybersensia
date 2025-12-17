@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X, Shield, User } from 'lucide-react';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,6 @@ export function Header() {
     { path: '/formation', label: 'Formation' },
     { path: '/centre-aide', label: "Centre d'aide" },
     { path: '/a-propos', label: 'À propos' },
-    { path: '/utilisateur', label: 'Utilisateur' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -50,6 +49,22 @@ export function Header() {
                 )}
               </Link>
             ))}
+            
+            {/* User Actions */}
+            <div className="flex items-center gap-2 ml-2">
+              <Link
+                to="/connexion"
+                className="rounded-lg border border-cyan-500 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400 transition-colors hover:bg-cyan-500/20"
+              >
+                Connexion
+              </Link>
+              <Link
+                to="/utilisateur"
+                className="rounded-lg bg-gray-800 p-2 text-gray-300 transition-colors hover:bg-gray-700 hover:text-cyan-400"
+              >
+                <User className="h-5 w-5" />
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -79,6 +94,24 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            
+            {/* Mobile User Actions */}
+            <div className="mt-4 space-y-2 border-t border-gray-800 pt-4 px-4">
+              <Link
+                to="/connexion"
+                className="block w-full rounded-lg border border-cyan-500 bg-cyan-500/10 px-4 py-2 text-center text-sm text-cyan-400 transition-colors hover:bg-cyan-500/20"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Connexion
+              </Link>
+              <Link
+                to="/utilisateur"
+                className="block w-full rounded-lg bg-gray-800 px-4 py-2 text-center text-sm text-gray-300 transition-colors hover:bg-gray-700 hover:text-cyan-400"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Mon Compte
+              </Link>
+            </div>
           </nav>
         )}
       </div>

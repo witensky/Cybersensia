@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { User, Lock, Bell, Shield, Eye, EyeOff, Mail, Phone, MapPin, Calendar } from 'lucide-react';
+import { FadeInUp, AnimatedButton, AnimatedCard } from '../AnimatedCard';
+import { motion } from 'motion/react';
 
 export function UserPage() {
   const [showPassword, setShowPassword] = useState(false);
